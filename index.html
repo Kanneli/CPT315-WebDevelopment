@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+        <script src="../jquery-3.6.1.min.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <img id="sus" class="sus" src="/assets/Sus.png" alt="">
+        <audio id="susSound" src="/assets/Amogus.mp3" type="audio/mpeg"></audio>
+        <h1>This is the main title</h1>
+        <div class="main">
+            <h2>This is amogus</h2>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci architecto doloremque nisi. Pariatur odit exercitationem facere delectus cum deleniti eaque?</p>
+            <ul>
+                <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti, quae.</li>
+                <ul>
+                    <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti, quae.</li>
+                    <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti, quae.</li>
+                </ul>
+                <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti, quae.</li>
+                <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti, quae.</li>
+            </ul>
+        </div>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit quos, vero doloremque eveniet atque repudiandae consectetur voluptatibus debitis tenetur aut pariatur a sequi perspiciatis quod qui magni sint dignissimos voluptatum.</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, magnam.</p>
+        <!-- Script -->
+        <script src="index.js"></script>
+        <script>
+            let mousePos = {
+                y: null,
+                x: null
+            };
+            let gap = 5;
+
+            $("document").ready(function () {
+                $("#sus").click(() => {
+                    $("#susSound")[0].play()
+                    $("#sus").animate(
+                        {rotation: 360},
+                        {
+                            duration: 3000,
+                            step: function(now, fx) {
+                                if (now <= 180) {
+                                    720 * now * now;
+                                    now -= 360
+                                }
+                                else {
+                                    now = 720 * now * (360 - now) + 360;
+                                }
+                                $(this).css({"transform": "rotate("+ now +"deg)"});
+                            }
+                        }
+                    )
+                    $("#sus").animate(
+                        {rotation: 0},
+                        {
+                            duration: 0,
+                            step: function(now, fx) {
+                                $(this).css({"transform": "rotate("+ now +"deg)"});
+                            }
+                        }
+                    )
+                })
+            })
+        </script>
+    </body>
+</html>
