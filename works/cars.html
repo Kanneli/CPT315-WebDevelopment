@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            input, select {
+                border: 1px lightgray solid;
+                border-radius: 3px;
+                padding: 4px;
+            }
+            input {
+                width: 200px;
+            }
+            input[type=color] {
+                width: 210px;
+                background: #fff;
+            }
+            button {
+                color: white;
+                background-color: orangered;
+                border: none;
+                padding: 10px;
+                width: 150px;
+                margin: 15px 0;
+            }
+            .page {
+                display: flex;
+                flex-direction: column;
+                margin: 0 auto;
+                width: 50vw;
+            }
+            .heading {
+                text-align: center;
+            }
+            .car {
+                width: 20vw;
+                margin: 30px;
+                fill: lightgray;
+            }
+            #arrow {
+                width: 10%;
+                margin: 20px;
+                fill: gray;
+            }
+            .row {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-bottom: 8px;
+            }
+            .car-label {
+                width:130px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="page">
+            <div class="heading">
+                <h2>New Paint Job</h2>
+            </div>
+            <div class="row">
+                <!-- Current Car -->
+                <svg id="current" class="car" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M135.2 117.4L109.1 192H402.9l-26.1-74.6C372.3 104.6 360.2 96 346.6 96H165.4c-13.6 0-25.7 8.6-30.2 21.4zM39.6 196.8L74.8 96.3C88.3 57.8 124.6 32 165.4 32H346.6c40.8 0 77.1 25.8 90.6 64.3l35.2 100.5c23.2 9.6 39.6 32.5 39.6 59.2V400v48c0 17.7-14.3 32-32 32H448c-17.7 0-32-14.3-32-32V400H96v48c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V400 256c0-26.7 16.4-49.6 39.6-59.2zM128 288c0-17.7-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32s32-14.3 32-32zm288 32c17.7 0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32z"/></svg>
+                <!-- Arrow -->
+                <svg id="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+                <!-- Target Car -->
+                <svg id="target" class="car" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M135.2 117.4L109.1 192H402.9l-26.1-74.6C372.3 104.6 360.2 96 346.6 96H165.4c-13.6 0-25.7 8.6-30.2 21.4zM39.6 196.8L74.8 96.3C88.3 57.8 124.6 32 165.4 32H346.6c40.8 0 77.1 25.8 90.6 64.3l35.2 100.5c23.2 9.6 39.6 32.5 39.6 59.2V400v48c0 17.7-14.3 32-32 32H448c-17.7 0-32-14.3-32-32V400H96v48c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V400 256c0-26.7 16.4-49.6 39.6-59.2zM128 288c0-17.7-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32s32-14.3 32-32zm288 32c17.7 0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32z"/></svg>
+            </div>
+            <h3>Car Details</h3>
+            <div class="row">
+                <label class="car-label" for="">Plate No.</label>
+                <input type="text">
+            </div>
+            <div class="row">
+                <label class="car-label" for="">Current Color</label>
+                <input type="color" name="currentcolor" id="currentcolor">
+            </div>
+            <div class="row">
+                <label class="car-label" for="">Target Color</label>
+                <input type="color" name="targetcolor" id="targetcolor">
+            </div>
+            <button type="submit">
+                Submit
+            </button>
+        </div>
+    </body>
+    <script>
+        const current_color = document.getElementById('currentcolor');
+        const target_color = document.getElementById('targetcolor');
+        let current_car = document.querySelector('.car')
+        let target_car = document.getElementById('target')
+
+        current_color.addEventListener('change', function handleChange(event) {
+            current_car.style.cssText = `fill:${event.target.value};`
+        });
+        target_color.addEventListener('change', function handleChange(event) {
+            target_car.style.cssText = `fill:${event.target.value};`
+        });
+    </script>
+</html>
