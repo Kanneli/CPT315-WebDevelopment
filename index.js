@@ -12,7 +12,7 @@ const links = [
     {name: 'RPS', link: '/works/rps.html'},
     {name: 'Prompt', link: '/works/rpsprompt.html'},
     {name: 'JQuery', link: '/works/jquery.html'},
-    {name: 'Random', link: '/works/random.html'}
+    {name: 'Random', link: '/works/random.html'},
     {name: 'Cars', link: '/works/cars.html'}
 ]
 
